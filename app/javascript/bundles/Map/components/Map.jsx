@@ -3,6 +3,13 @@ import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
 
 export default class Map extends Component {
+
+  constructor(){
+    super();
+    window.map = this;
+  }
+
+
   componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
     let { coordinates, centerOnUser } = this.props;
@@ -90,7 +97,14 @@ export default class Map extends Component {
       .then((response) => { map.getSource('places').setData(response.data) })
       .catch((error) => { console.log(error) });
   }
-  
+
+  flyTo = (long, lat) => {
+   const map = this.map;
+   map.flyTo({
+     center: [long, lat]
+   })
+ }
+
   render() {
     const style = {
       width: '100%',
