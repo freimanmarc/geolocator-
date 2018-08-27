@@ -1,4 +1,12 @@
 <%= form_with(model: place) do |form| %>
+<div>
+  <%= form.hidden_field :latitude %>
+    <%= form.text_field :latitude %>
+</div>
+<div>
+  <%= form.hidden_field :longitude%>
+  <%= form.text_field :longitude%>
+</div>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name, required: true, class: "text_input" %>
