@@ -1,5 +1,7 @@
 <h1><%= @place.name %></h1>
 <%= link_to "All places", places_path %>
+<%= button_to 'Delete Location', @place, method: :delete %>
+ 
 
 <%= react_component 'Map',
   props: {
